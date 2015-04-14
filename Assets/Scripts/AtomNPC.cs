@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
+
 using System.Collections;
+
+
 
 public class AtomNPC : MonoBehaviour {
     // holds the charge of the NPC
     public int atomicCharge =  0;
     // Get ZoneCheck's GameObject
     public ZoneCheck zone;
+
+
+
+
 	// Use this for initialization
 	void Start () {
         // find the script and allow me to check for collision

@@ -50,4 +50,9 @@ public class Character : MonoBehaviour
             rigidbody2D.velocity = new Vector2(rigidbody.velocity.x, maxSpeed * rigidbody.velocity.y);
         }
     }
+
+	public void HandleTheThing(Character cawactews, ZoneCheck imInTheZone)
+	{
+		// DO THINGS
+	}
 }

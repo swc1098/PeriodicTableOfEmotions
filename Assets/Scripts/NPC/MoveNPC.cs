@@ -12,6 +12,8 @@ namespace NPC
 		public bool isMoving = false;
 		public bool playerHere = false;
 		public bool isMatched = false;
+		public GameObject sparkle1;
+		public GameObject sparkle2;
 
 
 		[ContextMenu("Is the object following the player?")]
@@ -43,6 +45,18 @@ namespace NPC
 					col.gameObject.GetComponent<MoveNPC>().isMatched = true;
 					this.gameObject.GetComponent<AtomNPC>().Match();
 					col.gameObject.GetComponent<AtomNPC>().Match();
+					if(sparkle1.activeSelf == true)
+					{
+						Vector3 sparklePos = (this.gameObject.transform.position + col.gameObject.transform.position)/2;
+						sparkle2.SetActive(true);
+						sparkle2.transform.position = sparklePos;
+					}
+					else
+					{
+						Vector3 sparklePos = (this.gameObject.transform.position + col.gameObject.transform.position)/2;
+						sparkle1.SetActive(true);
+						sparkle1.transform.position = sparklePos;
+					}
 				}
 			}
 		}

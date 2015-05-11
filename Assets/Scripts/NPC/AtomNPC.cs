@@ -70,13 +70,17 @@ namespace NPC
 		// working around the broken conversation code for now...
 		string option;
 
-        Converser convo;
+        public Converser convo;
 
         public SpeechBubbleChanger sbc;
 				
 		bool isTrusting = false;
 		bool convoOpen = false;
 		bool isFollowing = false;
+
+		// A integer value that holds the electron charge of the atomNPC
+		// Right now I'm just setting it to where 8 = perfect. Anything else = failure.
+		public int electronCharge;
 
 		void Start()
 		{
@@ -207,10 +211,28 @@ namespace NPC
 			// Change the conversations around
 			if (sentiment == Sentiment.Trusting) 
 			{
-				if(isTrusting == false)
+				if(isTrusting == false && this.gameObject.name == "Atom")
 				{
 					sbc.SetAlternating(SpeechBubbleState.Exclaim, "F");
-					convo.conversation = GameObject.Find("Generic Trust").GetComponent<Container>();
+					convo.conversation = GameObject.Find("Generic Trust1").GetComponent<Container>();
+					isTrusting = true;
+				}
+				else if(isTrusting == false && this.gameObject.name == "Atom2")
+				{
+					sbc.SetAlternating(SpeechBubbleState.Exclaim, "F");
+					convo.conversation = GameObject.Find("Generic Trust2").GetComponent<Container>();
+					isTrusting = true;
+				}
+				else if(isTrusting == false && this.gameObject.name == "Atom3")
+				{
+					sbc.SetAlternating(SpeechBubbleState.Exclaim, "F");
+					convo.conversation = GameObject.Find("Generic Trust3").GetComponent<Container>();
+					isTrusting = true;
+				}
+				else if(isTrusting == false && this.gameObject.name == "Atom4")
+				{
+					sbc.SetAlternating(SpeechBubbleState.Exclaim, "F");
+					convo.conversation = GameObject.Find("Generic Trust4").GetComponent<Container>();
 					isTrusting = true;
 				}
 			}

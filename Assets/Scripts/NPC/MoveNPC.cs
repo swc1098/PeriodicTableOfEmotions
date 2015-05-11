@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
-
+using Conversation;
 
 namespace NPC
 {
@@ -37,7 +37,8 @@ namespace NPC
 			}
 			if(col.gameObject.tag == "Atom")
 			{
-				if(isMoving == true && col.gameObject.GetComponent<AtomNPC>().sentiment == Sentiment.Trusting && col.gameObject.GetComponent<AtomNPC>().state != State.InLove)
+				int result = this.gameObject.GetComponent<AtomNPC>().electronCharge + col.gameObject.GetComponent<AtomNPC>().electronCharge;
+				if(isMoving == true && col.gameObject.GetComponent<AtomNPC>().sentiment == Sentiment.Trusting && col.gameObject.GetComponent<AtomNPC>().state != State.InLove && result == 8)
 				{
 					this.gameObject.GetComponent<AtomNPC>().state = State.InLove;
 					col.gameObject.GetComponent<AtomNPC>().state = State.InLove;
@@ -58,6 +59,14 @@ namespace NPC
 						sparkle1.transform.position = sparklePos;
 					}
 				}
+				else if (col.gameObject.GetComponent<AtomNPC>().sentiment == Sentiment.Trusting && this.gameObject.GetComponent<AtomNPC>().sentiment == Sentiment.Trusting && result != 8)
+				{
+					//Debug.Log("Can't match");
+					this.gameObject.GetComponent<AtomNPC>().convo.conversation = GameObject.Find("InvalidMatch").GetComponent<Container>();
+					this.gameObject.GetComponent<AtomNPC>().convo.ResetConversation ();
+					this.gameObject.GetComponent<AtomNPC>().convo.UpdateConversation();
+					this.gameObject.GetComponent<AtomNPC>().convo.EnableConversation ();
+				}
 			}
 		}
 
@@ -67,6 +76,7 @@ namespace NPC
 			{
 				playerHere = false;
 			}
+			this.gameObject.GetComponent<AtomNPC>().convo.LeaveConversation ();
 		}
 
 		/// <summary>

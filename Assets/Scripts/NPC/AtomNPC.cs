@@ -191,19 +191,31 @@ namespace NPC
 		{
 			// Conversation placeholder, manages state change
 			// This way is abhorant but it's the best we can do right now. 
-			if (option == "Study of Matter")
+			if (option == "Balloons")
 			{
 				sentiment = Sentiment.Trusting;
 			} 
-			else if (option == "Antoine Lavoisier") 
+			else if (option == "1") 
 			{
 				sentiment = Sentiment.Trusting;
 			}
-			else if (option == "Electrons, Neutrons, and Protons")
+			else if (option == "Swimming Pools")
 			{
 				sentiment = Sentiment.Trusting;
 			} 
-			else if (option == "Hydrogen") 
+			else if (option == "Noble") 
+			{
+				sentiment = Sentiment.Trusting;
+			}
+			else if (option == "Mercury") 
+			{
+				sentiment = Sentiment.Trusting;
+			}
+			else if (option == "Albert Einstein") 
+			{
+				sentiment = Sentiment.Trusting;
+			}
+			else if (option == "Metal") 
 			{
 				sentiment = Sentiment.Trusting;
 			}
@@ -233,6 +245,24 @@ namespace NPC
 				{
 					sbc.SetAlternating(SpeechBubbleState.Exclaim, "F");
 					convo.conversation = GameObject.Find("Generic Trust4").GetComponent<Container>();
+					isTrusting = true;
+				}
+				else if(isTrusting == false && this.gameObject.name == "Atom5")
+				{
+					sbc.SetAlternating(SpeechBubbleState.Exclaim, "F");
+					convo.conversation = GameObject.Find("Generic Trust4").GetComponent<Container>();
+					isTrusting = true;
+				}
+				else if(isTrusting == false && this.gameObject.name == "Atom6")
+				{
+					sbc.SetAlternating(SpeechBubbleState.Exclaim, "F");
+					convo.conversation = GameObject.Find("Generic Trust1").GetComponent<Container>();
+					isTrusting = true;
+				}
+				else if(isTrusting == false && this.gameObject.name == "Atom7")
+				{
+					sbc.SetAlternating(SpeechBubbleState.Exclaim, "F");
+					convo.conversation = GameObject.Find("Generic Trust3").GetComponent<Container>();
 					isTrusting = true;
 				}
 			}
